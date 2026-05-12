@@ -1,0 +1,23 @@
+{
+  "overview": "A modern Linktree-style profile page with a fully in-app visual editor. Upload your profile photo, edit your name and bio, and manage all your links — no code needed. Glassy button design with a warm golden background.",
+  "features": [
+    "Visual in-app link editor — no code required",
+    "Profile photo and logo upload",
+    "Edit name and bio directly",
+    "Drag-to-reorder links",
+    "Add, edit, and delete links",
+    "Glassy button design with warm golden background",
+    "Owner-only editing via Internet Identity login",
+    "Public profile page for visitors"
+  ],
+  "category": "personal",
+  "tags": [
+    "linktree",
+    "profile",
+    "links",
+    "portfolio",
+    "personal-page",
+    "bio-link"
+  ],
+  "last_updated": "2026-05-12T20:08:32.016Z"
+}

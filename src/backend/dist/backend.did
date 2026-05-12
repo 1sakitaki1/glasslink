@@ -1,0 +1,48 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type Profile = 
+ record {
+   avatarBlob: opt ExternalBlob;
+   bio: text;
+   name: text;
+ };
+type LinkId = nat;
+type Link = 
+ record {
+   displayText: text;
+   icon: opt text;
+   id: LinkId;
+   orderIndex: nat;
+   url: text;
+ };
+type ExternalBlob = blob;
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  addLink: (url: text, displayText: text, icon: opt text, orderIndex: 
+   nat) -> (LinkId);
+  deleteLink: (id: LinkId) -> ();
+  getProfile: () -> (Profile) query;
+  listLinks: () -> (vec Link) query;
+  setProfile: (name: text, bio: text, avatarBlob: opt ExternalBlob) -> ();
+  updateLink: (id: LinkId, url: text, displayText: text, icon: opt text,
+   orderIndex: nat) -> ();
+}

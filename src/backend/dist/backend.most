@@ -1,0 +1,43 @@
+// Version: 3.0.0
+type ExternalBlob__671167343 = Blob;
+type LinkId__61814416 = Nat;
+type Link__625490308 =
+  {
+    displayText : Text;
+    icon : ?Text;
+    id : LinkId__61814416;
+    orderIndex : Nat;
+    url : Text
+  };
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type OldLink__10014331 =
+  {displayText : Text; icon : ?Text; id : Nat; orderIndex : Nat; url : Text};
+type OldProfileState__609874124 =
+  {var avatarUrl : ?Text; var bio : Text; var name : Text};
+actor ({
+  in counter : {var next : Nat};
+  in links : List__415060402<OldLink__10014331>;
+  in profileState : OldProfileState__609874124
+}, {
+  stable counter : {var next : Nat};
+  stable links :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Link__625490308]];
+      var elementIndex : Nat__490723111
+    };
+  stable profileState :
+    {
+      var avatarBlob : ?ExternalBlob__671167343;
+      var bio : Text;
+      var name : Text
+    }
+});
